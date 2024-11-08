@@ -2,7 +2,7 @@
 require 'faker'
 require_relative 'logger_manager'
 
-module DvoryannikovApplication
+module StoreApplication
   class Item
     include Comparable
 
@@ -17,7 +17,7 @@ module DvoryannikovApplication
 
       yield self if block_given?
 
-      DvoryannikovApplication::LoggerManager.log_processed_file("Initialized Item: #{self.inspect}")
+      StoreApplication::LoggerManager.log_processed_file("Initialized Item: #{self.inspect}")
     end
 
     def to_s
@@ -38,7 +38,7 @@ module DvoryannikovApplication
 
     def update
       yield self if block_given?
-      DvoryannikovApplication::LoggerManager.log_processed_file("Updated Item: #{self.inspect}")
+      StoreApplication::LoggerManager.log_processed_file("Updated Item: #{self.inspect}")
     end
 
     def self.generate_fake

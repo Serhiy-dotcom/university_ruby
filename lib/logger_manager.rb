@@ -1,7 +1,7 @@
 require 'logger'
 require_relative 'app_config_loader'
 
-module DvoryannikovApplication
+module StoreApplication
   class LoggerManager
     def self.log_processed_file(message)
 		puts "[INFO] #{message}"

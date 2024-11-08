@@ -1,7 +1,7 @@
 require_relative './lib/item'
 require_relative './lib/logger_manager'
 
-item = DvoryannikovApplication::Item.new(name: "Test Product", price: 100) do |i|
+item = StoreApplication::Item.new(name: "Test Product", price: 100) do |i|
   i.description = "Test description"
   i.category = "Test category"
 end
@@ -17,5 +17,5 @@ end
 
 puts item.info
 
-fake_item = DvoryannikovApplication::Item.generate_fake
+fake_item = StoreApplication::Item.generate_fake
 puts fake_item.to_s
