@@ -2,13 +2,12 @@ require 'yaml'
 require 'erb'
 require 'json'
 
-module LakustaApplication
+module DvoryannikovApplication
   class AppConfigLoader
 	def load_libs
 	  system_libs = ['date']
 	  system_libs.each { |lib| require lib }
 	  
-	  # Підключаємо всі Ruby файли в `lib`, крім самого `app_config_loader.rb`
 	  Dir.glob(File.expand_path('../*.rb', __dir__)).each do |file|
 		require file unless file == __FILE__
 	  end
