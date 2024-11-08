@@ -1,21 +1,19 @@
 module StoreApplication
 	class Configurator
 	  attr_accessor :config
-  
-	  # Step 2: Initialize with default configuration values
+
 	  def initialize
 		@config = {
-		  run_website_parser: 0,    # Run website parser
-		  run_save_to_csv: 0,       # Save data in CSV format
-		  run_save_to_json: 0,      # Save data in JSON format
-		  run_save_to_yaml: 0,      # Save data in YAML format
-		  run_save_to_sqlite: 0,    # Save data in SQLite database
-		  run_save_to_mongodb: 0    # Save data in MongoDB database
+		  run_website_parser: 0,
+		  run_save_to_csv: 0,
+		  run_save_to_json: 0,
+		  run_save_to_yaml: 0,
+		  run_save_to_sqlite: 0,
+		  run_save_to_mongodb: 0
 		}
 		puts "[INFO] Configurator initialized with default settings"
 	  end
-  
-	  # Step 3: Method to update configuration with overrides
+
 	  def configure(overrides = {})
 		overrides.each do |key, value|
 		  if @config.key?(key)
@@ -26,8 +24,7 @@ module StoreApplication
 		  end
 		end
 	  end
-  
-	  # Step 4: Class method to list available configuration keys
+
 	  def self.available_methods
 		%i[
 		  run_website_parser
