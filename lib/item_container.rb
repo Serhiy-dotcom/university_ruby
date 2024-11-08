@@ -1,59 +1,51 @@
-require 'json'
-require 'csv'
-require 'yaml'
-require_relative 'logger_manager'
-require_relative 'item'
-require_relative 'item_container'
-
 module StoreApplication
-  class Cart
-    include ItemContainer
-    include Enumerable
-
-    attr_accessor :items
-
-    def initialize
-      @items = []
-      LoggerManager.log_processed_file("Cart initialized")
-    end
-
-    def save_to_file(filename = 'items.txt')
-      File.open(filename, 'w') do |file|
-        @items.each { |item| file.puts(item.to_s) }
+  module ItemContainer
+    module ClassMethods
+      def class_info
+        "Class: #{name}, Version: 1.0"
       end
-      LoggerManager.log_processed_file("Saved items to #{filename}")
-    end
 
-    def save_to_json(filename = 'items.json')
-      File.write(filename, @items.map(&:to_h).to_json)
-      LoggerManager.log_processed_file("Saved items to #{filename}")
-    end
-
-    def save_to_csv(filename = 'items.csv')
-      CSV.open(filename, 'w') do |csv|
-        csv << @items.first.to_h.keys
-        @items.each { |item| csv << item.to_h.values }
+      def object_count
+        @object_count ||= 0
       end
-      LoggerManager.log_processed_file("Saved items to #{filename}")
-    end
 
-    def save_to_yml(directory = 'items_yml')
-      Dir.mkdir(directory) unless Dir.exist?(directory)
-      @items.each_with_index do |item, index|
-        File.write("#{directory}/item_#{index + 1}.yml", item.to_h.to_yaml)
+      def increment_object_count
+        @object_count = object_count + 1
       end
-      LoggerManager.log_processed_file("Saved items to YAML files in #{directory}")
     end
 
-    def each(&block)
-      @items.each(&block)
-    end
-
-    def generate_test_items(count = 5)
-      count.times do
-        add_item(StoreApplication::Item.generate_fake)
+    module InstanceMethods
+      def add_item(item)
+        @items << item
+        LakustaApplication::LoggerManager.log_processed_file("Added item: #{item.inspect}")
       end
-      LoggerManager.log_processed_file("Generated #{count} test items")
+
+      def remove_item(item)
+        @items.delete(item)
+        LakustaApplication::LoggerManager.log_processed_file("Removed item: #{item.inspect}")
+      end
+
+      def delete_items
+        @items.clear
+        LakustaApplication::LoggerManager.log_processed_file("Cleared all items from cart")
+      end
+
+      def method_missing(method_name, *arguments, &block)
+        if method_name == :show_all_items
+          @items.each { |item| puts item }
+        else
+          super
+        end
+      end
+
+      def respond_to_missing?(method_name, include_private = false)
+        method_name == :show_all_items || super
+      end
+    end
+
+    def self.included(base)
+      base.extend(ClassMethods)
+      base.include(InstanceMethods)
     end
   end
 end
