@@ -2,7 +2,7 @@ require 'yaml'
 require 'erb'
 require 'json'
 
-module DvoryannikovApplication
+module StoreApplication
   class AppConfigLoader
 	def load_libs
 	  system_libs = ['date']

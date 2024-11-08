@@ -1,7 +1,7 @@
 require_relative 'app_config_loader'
 require_relative 'logger_manager'
 
-module DvoryannikovApplication
+module StoreApplication
 	class Main
 	  def self.start
 		config_loader = AppConfigLoader.new('config/default_config.yaml', 'config')
@@ -24,4 +24,4 @@ module DvoryannikovApplication
 	end
 end
 
-DvoryannikovApplication::Main.start
+StoreApplication::Main.start
