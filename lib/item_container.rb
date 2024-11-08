@@ -17,17 +17,17 @@ module StoreApplication
     module InstanceMethods
       def add_item(item)
         @items << item
-        LakustaApplication::LoggerManager.log_processed_file("Added item: #{item.inspect}")
+        StoreApplication::LoggerManager.log_processed_file("Added item: #{item.inspect}")
       end
 
       def remove_item(item)
         @items.delete(item)
-        LakustaApplication::LoggerManager.log_processed_file("Removed item: #{item.inspect}")
+        StoreApplication::LoggerManager.log_processed_file("Removed item: #{item.inspect}")
       end
 
       def delete_items
         @items.clear
-        LakustaApplication::LoggerManager.log_processed_file("Cleared all items from cart")
+        StoreApplication::LoggerManager.log_processed_file("Cleared all items from cart")
       end
 
       def method_missing(method_name, *arguments, &block)
