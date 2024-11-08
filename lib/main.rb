@@ -1,7 +1,7 @@
 require_relative 'app_config_loader'
 require_relative 'logger_manager'
 
-module LakustaApplication
+module DvoryannikovApplication
 	class Main
 	  def self.start
 		config_loader = AppConfigLoader.new('config/default_config.yaml', 'config')
@@ -24,4 +24,4 @@ module LakustaApplication
 	end
 end
 
-LakustaApplication::Main.start
+DvoryannikovApplication::Main.start
