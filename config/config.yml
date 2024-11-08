@@ -1,0 +1,8 @@
+start_url: "https://24ka.com.ua/ua/g134495122-bolgarki"
+base_url: "https://24ka.com.ua"
+product_link_selector: "//a[@class='cs-goods-title']"
+name_selector: "//h1//span['text']"
+price_selector: "//p[@class='b-product-cost__price']"
+description_selector: "//div[@class='b-user-content']//p//span"
+image_selector: ".cs-pictures__img"
+category: "24ka"
