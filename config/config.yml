@@ -6,3 +6,7 @@ price_selector: "//p[@class='b-product-cost__price']"
 description_selector: "//div[@class='b-user-content']//p//span"
 image_selector: ".cs-pictures__img"
 category: "24ka"
+database_type: 'sqlite'
+sqlite_path: 'db/my_database.sqlite'
+mongodb_uri: 'mongodb+srv://admin:admin@cluster0.iuyo3.mongodb.net/'
+mongodb_database: 'my_mongo_database'
