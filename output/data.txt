@@ -1,0 +1,3 @@
+Sleek Paper Pants - Velit minus in quaerat. (Category: Baby & Toys, Price: 85.85, Image: fake/path/to/image.jpg)
+Sleek Iron Lamp - Harum ullam exercitationem id. (Category: Tools & Garden, Price: 88.8, Image: fake/path/to/image.jpg)
+Heavy Duty Plastic Hat - Assumenda harum suscipit at. (Category: Tools, Price: 44.11, Image: fake/path/to/image.jpg)
