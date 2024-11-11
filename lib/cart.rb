@@ -17,19 +17,19 @@ module StoreApplication
       LoggerManager.log_processed_file("Cart initialized")
     end
 
-    def save_to_file(filename = 'items.txt')
+    def save_to_file(filename = 'output/data.txt')
       File.open(filename, 'w') do |file|
         @items.each { |item| file.puts(item.to_s) }
       end
       LoggerManager.log_processed_file("Saved items to #{filename}")
     end
 
-    def save_to_json(filename = 'items.json')
+    def save_to_json(filename = 'output/data.json')
       File.write(filename, @items.map(&:to_h).to_json)
       LoggerManager.log_processed_file("Saved items to #{filename}")
     end
 
-    def save_to_csv(filename = 'items.csv')
+    def save_to_csv(filename = 'output/data.csv')
       CSV.open(filename, 'w') do |csv|
         csv << @items.first.to_h.keys
         @items.each { |item| csv << item.to_h.values }

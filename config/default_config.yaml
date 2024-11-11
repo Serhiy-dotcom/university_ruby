@@ -3,3 +3,8 @@ default:
   config_dir: config
   yaml_dir: config/yaml_config
   media_dir: media
+logging:
+  level: INFO
+database:
+  type: sqlite
+  path: "db/my_database.sqlite"

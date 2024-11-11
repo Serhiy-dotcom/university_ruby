@@ -21,7 +21,7 @@ module StoreApplication
 		product_links = extract_products_links(@agent.get(@config['start_url']))
 	  
 		product_links.each do |link|
-			StoreApplication::LoggerManager.log_processed_file("Link found #{link}")
+		  StoreApplication::LoggerManager.log_processed_file("Link found #{link}")
 		  next if @processed_links.include?(link)
 	  
 		  parse_product_page(link)
@@ -29,7 +29,9 @@ module StoreApplication
 		end
 	  
 		StoreApplication::LoggerManager.log_processed_file("Parsing completed with #{@item_collection.items.count} products")
+		@item_collection.items
 	  end
+	  
 
     def extract_products_links(page)
       selector = @config['product_link_selector']
